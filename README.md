@@ -68,3 +68,24 @@ flutter run --dart-define=API_URL=https://your-api/api/v1
 ```
 
 Default backend: `http://18.60.129.43:8080/api/v1`.
+
+## PRD v2.0 core client (`CORE_API`)
+
+| dart-define | Default | Meaning |
+|-------------|---------|---------|
+| `API_URL` | `http://18.60.129.43:8080/api/v1` | API base URL |
+| `CORE_API` | `false` | `true` → PRD v2.0 core client only (`lib/core_api/`, `lib/screens/v2/`, `lib/navigation/`). `false` → legacy demo app, unchanged. |
+| `DEMO_MODE` | `false` | Shows the dev OTP echo on the OTP screen (core) when the server returns `devCode`. |
+
+```bash
+# local core backend from the Android emulator (dev OTP 1234)
+flutter build apk --debug --dart-define=API_URL=http://10.0.2.2:8080/api/v1 --dart-define=CORE_API=true
+```
+
+Core builds never call the legacy `/shipments` mock, guessed OTP endpoints or the
+demo register/login fallback, and never derive money or payment state on the device
+(amounts are server `*Paise` fields, buttons follow `allowedActions`/`blockedActions`,
+"Paid" only from the server). Tokens are kept in `flutter_secure_storage`. Deep links:
+`dropzy://shipments/{id}`, `dropzy://shipments/{id}/pay`, `dropzy://payments/return?intentId=`.
+Android cleartext HTTP is limited by `res/xml/network_security_config.xml`
+(debug: 10.0.2.2 / localhost / 127.0.0.1; all builds: the legacy demo host until it has TLS).

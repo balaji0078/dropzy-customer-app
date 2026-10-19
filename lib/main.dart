@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
+import 'core/constants.dart';
 import 'core/theme.dart';
 import 'state/services.dart';
 import 'state/auth_provider.dart';
 import 'screens/splash_screen.dart';
 import 'screens/login_screen.dart';
 import 'screens/home_shell.dart';
+import 'screens/v2/core_app.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,6 +19,13 @@ void main() {
     systemNavigationBarColor: DropzyColors.bg,
     systemNavigationBarIconBrightness: Brightness.light,
   ));
+
+  // CORE_API=true → PRD v2.0 core client only (screens/v2, core_api/).
+  // Otherwise the legacy demo app below runs unchanged.
+  if (AppConfig.coreApi) {
+    runCoreApp();
+    return;
+  }
 
   final services = Services();
 
