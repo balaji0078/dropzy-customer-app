@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Release / profile builds: HTTPS only (CLIENT_CONTRACTS.md §2.0), with ONE
+  temporary exception: the legacy demo backend default API_URL
+  (http://18.60.129.43:8080/api/v1, lib/core/constants.dart) has no TLS yet,
+  so cleartext is allowed for that host only so that existing legacy
+  (CORE_API=false) release builds keep working. Remove this domain-config as
+  soon as the API is served over HTTPS. Debug builds get the local-dev hosts
+  from src/debug/res/xml/network_security_config.xml (which overrides this
+  file for the debug build type).
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false" />
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">18.60.129.43</domain>
+    </domain-config>
+</network-security-config>
