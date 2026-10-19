@@ -14,6 +14,6 @@ void main() {
     );
 
     expect(find.text('Dropzy'), findsOneWidget);
-    expect(find.byIcon(Icons.inventory_2_rounded), findsOneWidget);
+    expect(find.byIcon(Icons.local_shipping_rounded), findsOneWidget);
   });
 }
