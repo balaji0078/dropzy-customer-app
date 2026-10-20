@@ -67,13 +67,13 @@ Different backend:
 flutter run --dart-define=API_URL=https://your-api/api/v1
 ```
 
-Default backend: `http://18.60.129.43:8080/api/v1`.
+Default backend: `http://16.112.168.63:8080/api/v1`.
 
 ## PRD v2.0 core client (`CORE_API`)
 
 | dart-define | Default | Meaning |
 |-------------|---------|---------|
-| `API_URL` | `http://18.60.129.43:8080/api/v1` | API base URL |
+| `API_URL` | `http://16.112.168.63:8080/api/v1` | API base URL |
 | `CORE_API` | `false` | `true` → PRD v2.0 core client only (`lib/core_api/`, `lib/screens/v2/`, `lib/navigation/`). `false` → legacy demo app, unchanged. |
 | `DEMO_MODE` | `false` | Shows the dev OTP echo on the OTP screen (core) when the server returns `devCode`. |
 

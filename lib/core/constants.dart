@@ -6,7 +6,7 @@ class AppConfig {
   /// Override: flutter run --dart-define=API_URL=https://api.dropzy.in/api/v1
   static const String apiBaseUrl = String.fromEnvironment(
     'API_URL',
-    defaultValue: 'http://18.60.129.43:8080/api/v1',
+    defaultValue: 'http://16.112.168.63:8080/api/v1',
   );
 
   /// `--dart-define=CORE_API=true` switches the whole app to the PRD v2.0
